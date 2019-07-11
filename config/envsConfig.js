@@ -1,5 +1,27 @@
 'use strict';
 
+class EnvironmentLink extends React.Component {
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {isActive: false};
+    // }
+
+    // componentDidMount() {
+
+    // }
+  
+    // componentWillUnmount() {
+  
+    // }
+
+    render () {
+        return (
+            <button value={this.props.code}>{this.props.code}</button>
+        );
+    }
+}
+
 //this variable stores configuration of Environments
 var envs = 
 {
@@ -14,6 +36,3 @@ var envs =
     ]
 };
 
-function EnvironmentLink(props) {
-    return <button value={props.code}>{props.code}</button>;
-}
