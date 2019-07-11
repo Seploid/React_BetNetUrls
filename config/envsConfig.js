@@ -2,10 +2,23 @@
 
 class EnvironmentLink extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {isActive: false};
-    // }
+    constructor(props) {
+        super(props);
+        if (props.code === 'prod') {
+            this.state = {isToggleOn: true};
+        } else {
+            this.state = {isToggleOn: false};
+        }
+        
+        //important part  
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+        }));
+    }
 
     // componentDidMount() {
 
@@ -17,7 +30,9 @@ class EnvironmentLink extends React.Component {
 
     render () {
         return (
-            <button value={this.props.code}>{this.props.code}</button>
+            <button istoggleon={this.state.isToggleOn.toString()} value={this.props.code} onClick={this.handleClick}>
+                {this.props.code}
+            </button>
         );
     }
 }
@@ -27,7 +42,8 @@ var envs =
 {
     mainEnvs:[
         <EnvironmentLink key="0" code="dev"/>,
-        <EnvironmentLink key="1" code="beta"/>
+        <EnvironmentLink key="1" code="beta"/>,
+        <EnvironmentLink key="2" code="prod"/>
     ],
     extraEnvs:[
         <EnvironmentLink key="0" code="dev2a"/>,
