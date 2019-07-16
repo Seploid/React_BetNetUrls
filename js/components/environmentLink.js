@@ -5,20 +5,13 @@ class Environment extends React.Component {
     constructor(props) {
         super(props);
         if (props.code === 'prod') {
-            this.state = {isToggleOn: true};
+            this.state = {byDefault: true};
         } else {
-            this.state = {isToggleOn: false};
+            this.state = {byDefault: false};
         }
         
-        //important part  
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
-    }
 
     // componentDidMount() {
 
@@ -30,9 +23,10 @@ class Environment extends React.Component {
 
     render () {
         return (
-            <button istoggleon={this.state.isToggleOn.toString()} value={this.props.code} onClick={this.handleClick}>
-                {this.props.code}
-            </button>
+            <div>
+                <input type="radio" name="environment"  value={this.props.code} id={this.props.code} defaultChecked={this.state.byDefault} onChange={this.props.handleChangeEnv}></input>
+                <label htmlFor={this.props.code}>{this.props.code}</label>
+            </div>
         );
     }
 }
