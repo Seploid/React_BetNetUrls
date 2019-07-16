@@ -6,19 +6,37 @@ class Form extends React.Component {
         super(props);
         this.state = {
             tail: '',
-            env: 'prod'
+            env: 'prod',
+            targetLink: undefined
         };
+
+        console.log('Tail by default is ' + this.state.tail);
+        console.log('Environment by default is ' + this.state.env);
 
         //important part
         this.handleChangeTail = this.handleChangeTail.bind(this);
+        this.handleChangeEnv = this.handleChangeEnv.bind(this);
+        this.handleClickOnDomain = this.handleClickOnDomain.bind(this);
     }
 
     handleChangeTail(event) {
         this.setState({"tail": event.target.value});
+        console.log('Tail was changed on ' + event.target.value);
     }
 
     handleChangeEnv(event) {
-        this.setState({"env": event.target.value})
+        this.setState({"env": event.target.value});
+        console.log('Environment was changed on ' + event.target.value);
+    }
+
+    handleClickOnDomain(event) {
+        if (this.state.env === 'prod') {
+            this.setState({targetLink: event.target.prodlink})
+        } else {
+            let link = 'https://www.' + event.target.code + '.' + this.state.env + '.com';
+            this.setState({targetLink: link})
+        }
+        window.open(this.state.targetLink, '_blank');
     }
 
     render() {
@@ -31,7 +49,7 @@ class Form extends React.Component {
 
         return (
             <div>
-                <div className="envs">
+                <div className="envs" onChange={this.handleChangeEnv}>
                     <div className="mainEnvs">
                         {ENVS.mainEnvs}
                     </div>
@@ -45,7 +63,7 @@ class Form extends React.Component {
                         {TAILS}
                     </datalist>
                 </div>
-                <div>
+                <div onClick={this.handleClickOnDomain}>
                     {groups}
                 </div>
             </div>

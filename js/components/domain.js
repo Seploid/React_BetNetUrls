@@ -45,7 +45,7 @@ class Domain extends React.Component {
     render () {
         return (
             <div>
-                <a href={this.props.prodlink}>{this.props.code}</a>
+                <input type="button" value={this.props.code}></input>
             </div>
         );
     }
