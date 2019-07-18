@@ -55,9 +55,14 @@ class Form extends React.Component {
                     </datalist>
                 </div>
                 <div>
-                    {GROUPS_OF_DOMAINS.map((group, index) =>
-                        <GroupOfDomains key={index} name={group.groupname} domains={group.domains} env={this.state.env} tail={this.state.tail}/>
-                    )}
+                    {GROUPS_OF_DOMAINS.map((group, index) => (
+                        <ul key={index}>
+                            <h2>{group.groupName}</h2>
+                            {group.domains.map((domain, index) => (
+                                <Domain key={index} domainCode={domain.domainCode} prodLink={domain.prodLink} env={this.state.env} tail={this.state.tail}/>
+                            ))}
+                        </ul>
+                    ))}
                 </div>
             </div>
         );

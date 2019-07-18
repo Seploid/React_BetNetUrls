@@ -4,7 +4,7 @@
 //this constant stores configuration of Domains
 const GROUPS_OF_DOMAINS = [
     {
-        groupname: "Generic",
+        groupName: "Generic",
         domains:[
             {
                 domainCode: "com-en",
@@ -13,7 +13,7 @@ const GROUPS_OF_DOMAINS = [
         ] 
     },
     {
-        groupname: "Trukish",
+        groupName: "Trukish",
         domains:[
             {
                 domainCode: "superbahis-tu",
