@@ -6,24 +6,14 @@ class GroupOfDomains extends React.Component {
         super(props);
     }
 
-    // componentDidMount() {
-
-    // }
-  
-    // componentWillUnmount() {
-  
-    // }
-
     render () {
-        let domains = this.props.domains.map(function(domain, index) {
-            return <Domain key={index} code={domain.code} prodlink={domain.prodlink}/>
-        });
-
         return (
-            <div>
+            <ul>
                 <h2>{this.props.name}</h2>
-                {domains}
-            </div>
+                {this.props.domains.map((domain, index) =>
+                    <Domain key={index} domainCode={domain.domainCode} prodLink={domain.prodLink} env={this.props.env} tail={this.props.tail}/>
+                )}
+            </ul>
         );
     }
 }
@@ -32,21 +22,25 @@ class Domain extends React.Component {
 
     constructor(props) {
         super(props);
+
     }
 
-    // componentDidMount() {
-
-    // }
-  
-    // componentWillUnmount() {
-  
-    // }
+    buildLink(prodLink, domainCode, env, tail) {
+        let link = "";
+        if (env == "prod") {
+            link = prodLink;
+        } else {
+            link = `https://www.${domainCode}.${env}.webgl.com/`;
+        }
+        link = link + tail;
+        return link;
+    }
 
     render () {
         return (
-            <div>
-                <input type="button" value={this.props.code}></input>
-            </div>
+            <li>
+                <a href={this.buildLink(this.props.prodLink, this.props.domainCode, this.props.env, this.props.tail)}>{this.props.domainCode}</a>
+            </li>
         );
     }
 }

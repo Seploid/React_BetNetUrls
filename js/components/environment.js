@@ -12,15 +12,6 @@ class Environment extends React.Component {
         
     }
 
-
-    // componentDidMount() {
-
-    // }
-  
-    // componentWillUnmount() {
-  
-    // }
-
     render () {
         return (
             <div>

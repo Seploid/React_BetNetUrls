@@ -1,17 +1,14 @@
 'use strict';
 
-//this variable stores configuration of Environments
-const ENVS = 
-{
-    mainEnvs:[
-        <Environment key="0" code="dev"/>,
-        <Environment key="1" code="beta"/>,
-        <Environment key="2" code="prod"/>
-    ],
-    extraEnvs:[
-        <Environment key="0" code="dev2a"/>,
-        <Environment key="1" code="dev2b"/>,
-        <Environment key="2" code="dev2c"/>
-    ]
-};
+//this constant stores configuration of Environments
+const ENVS = [
+    {
+        groupName:"Main Environments",
+        envs: [ "dev2", "stage", "beta", "promo", "prod"]
+    },
+    {
+        groupName:"Additional Environments",
+        envs: [ "dev2a", "dev2b", "dev2c", "dev2d", "dev2e", "dev2f", "beta-a", "beta-b"]
+    }
+];
 

@@ -6,14 +6,6 @@ class Tail extends React.Component {
         super(props);
     }
 
-    // componentDidMount() {
-
-    // }
-  
-    // componentWillUnmount() {
-  
-    // }
-
     render () {
         return (
             <option value={this.props.value} />

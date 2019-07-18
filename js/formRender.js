@@ -16,12 +16,14 @@ class Form extends React.Component {
         //important part
         this.handleChangeTail = this.handleChangeTail.bind(this);
         this.handleChangeEnv = this.handleChangeEnv.bind(this);
-        this.handleClickOnDomain = this.handleClickOnDomain.bind(this);
     }
+
+    
 
     handleChangeTail(event) {
         this.setState({"tail": event.target.value});
         console.log('Tail was changed on ' + event.target.value);
+        this.update
     }
 
     handleChangeEnv(event) {
@@ -29,42 +31,33 @@ class Form extends React.Component {
         console.log('Environment was changed on ' + event.target.value);
     }
 
-    handleClickOnDomain(event) {
-        if (this.state.env === 'prod') {
-            this.setState({targetLink: event.target.prodlink})
-        } else {
-            let link = 'https://www.' + event.target.code + '.' + this.state.env + '.com';
-            this.setState({targetLink: link})
-        }
-        window.open(this.state.targetLink, '_blank');
-    }
-
     render() {
-        let groups = GROUPS_OF_DOMAINS.map(function(group, index) {
-
-            return (
-                <GroupOfDomains key={index} name={group.groupname} domains={group.domains}/>
-            );
-        })
-
         return (
             <div>
                 <div className="envs" onChange={this.handleChangeEnv}>
-                    <div className="mainEnvs">
-                        {ENVS.mainEnvs}
-                    </div>
-                    <div className="extraEnvs">
-                        {ENVS.extraEnvs}
-                    </div>
+                    {ENVS.map((env, index) => (
+                        <div key={index}>
+                            <h2>{env.groupName}</h2>
+                            <div>{env.envs.map(e => 
+                                    <Environment key={e} code={e}/>
+                                    )}
+                            </div>
+                        </div>
+                        ))}
                 </div>
                 <div className="tail">
+                    <h2>Tail</h2>
                     <input list="tails" onChange={this.handleChangeTail}/>
                     <datalist id="tails">
-                        {TAILS}
+                        {TAILS.map((tail, index) => 
+                            <Tail key={index} value={tail}/>
+                            )}
                     </datalist>
                 </div>
-                <div onClick={this.handleClickOnDomain}>
-                    {groups}
+                <div>
+                    {GROUPS_OF_DOMAINS.map((group, index) =>
+                        <GroupOfDomains key={index} name={group.groupname} domains={group.domains} env={this.state.env} tail={this.state.tail}/>
+                    )}
                 </div>
             </div>
         );

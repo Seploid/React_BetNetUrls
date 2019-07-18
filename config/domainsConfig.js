@@ -1,13 +1,14 @@
 'use strict';
 
-//this variable stores configuration of Domains
+
+//this constant stores configuration of Domains
 const GROUPS_OF_DOMAINS = [
     {
         groupname: "Generic",
         domains:[
             {
-                code: "com-en",
-                prodlink: "wwww.ya.ru"
+                domainCode: "com-en",
+                prodLink: "http://wwww.google.ru"
             }
         ] 
     },
@@ -15,12 +16,12 @@ const GROUPS_OF_DOMAINS = [
         groupname: "Trukish",
         domains:[
             {
-                code: "superbahis-tu",
-                prodlink: "wwww.ya.ru"
+                domainCode: "superbahis-tu",
+                prodLink: "http://wwww.ya.ru"
             },
             {
-                code: "superbahis-en",
-                prodlink: "wwww.ya.ru"
+                domainCode: "superbahis-en",
+                prodLink: "http://wwww.yandex.ru"
             }
         ] 
     },
