@@ -12,7 +12,7 @@ class Domain extends React.Component {
         if (env == "prod") {
             link = prodLink;
         } else {
-            link = `https://www.${domainCode}.${env}.webgl.com/`;
+            link = `https://www${domainCode}.${env}.webglb.com/`;
         }
         link = link + tail;
         return link;
@@ -20,9 +20,9 @@ class Domain extends React.Component {
 
     render () {
         return (
-            <li>
-                <a href={this.buildLink(this.props.prodLink, this.props.domainCode, this.props.env, this.props.tail)}>{this.props.domainCode}</a>
-            </li>
+            <div class="domain">
+                <a href={this.buildLink(this.props.prodLink, this.props.domainCode, this.props.env, this.props.tail)} target="_blank">{this.props.domainCode}</a>
+            </div>
         );
     }
 }

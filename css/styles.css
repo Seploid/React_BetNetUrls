@@ -1,0 +1,67 @@
+body {
+    font-family: "Gill Sans", "sans-serif";
+    text-align: center;
+   
+}
+
+
+table {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#update {
+    padding: 16px 100px;
+    margin: 10px;
+    background-color: #4b1751;
+    color: grey;
+    border: none;
+    border-radius: 10px;
+}
+
+.usuallyUsed, .rarelyUsed {
+    margin: 0px 10px;
+    display: inline-block;
+    align: center;
+}
+label {
+    
+}
+
+.usuallyUsed label{
+    background-color: #cae809;
+    padding: 16px 50px;
+    border-radius: 10px;
+}
+
+.rarelyUsed {
+    margin-bottom: 20px;
+}
+.rarelyUsed label{
+    background-color: #ebefd0;
+    padding: 16px 50px;
+    border-radius: 10px;
+    color: grey;
+    
+}
+
+table, th, td {
+    border: 1px solid #cae809;
+}
+table {
+    border-collapse: collapse;
+}
+
+.envButtons:focus {     
+    background-color:red;    
+}
+
+table table {
+    border: 0px;
+    width: 100%;
+}
+
+td:has(table) {
+    vertical-align: top;
+    color: red;
+}

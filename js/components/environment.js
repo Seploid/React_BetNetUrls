@@ -14,10 +14,10 @@ class Environment extends React.Component {
 
     render () {
         return (
-            <div>
-                <input type="radio" name="environment"  value={this.props.code} id={this.props.code} defaultChecked={this.state.byDefault} onChange={this.props.handleChangeEnv}></input>
-                <label htmlFor={this.props.code}>{this.props.code}</label>
-            </div>
+            <label>
+                <input type="radio" name="environment"  value={this.props.code} id={this.props.code + '-env'} defaultChecked={this.state.byDefault} onChange={this.props.handleChangeEnv}></input>
+                <span>{this.props.code}</span>
+            </label>
         );
     }
 }

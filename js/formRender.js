@@ -6,8 +6,7 @@ class Form extends React.Component {
         super(props);
         this.state = {
             tail: '',
-            env: 'prod',
-            targetLink: undefined
+            env: 'prod'
         };
 
         console.log('Tail by default is ' + this.state.tail);
@@ -38,30 +37,31 @@ class Form extends React.Component {
                     {ENVS.map((env, index) => (
                         <div key={index}>
                             <h2>{env.groupName}</h2>
-                            <div>{env.envs.map(e => 
-                                    <Environment key={e} code={e}/>
-                                    )}
+                            <div>
+                                {env.envs.map(e => <Environment key={e} code={e}/>)}
                             </div>
                         </div>
                         ))}
                 </div>
                 <div className="tail">
-                    <h2>Tail</h2>
-                    <input list="tails" onChange={this.handleChangeTail}/>
-                    <datalist id="tails">
-                        {TAILS.map((tail, index) => 
-                            <Tail key={index} value={tail}/>
-                            )}
-                    </datalist>
+                    <label>
+                        <span>Tail</span>
+                        <input list="tails" onChange={this.handleChangeTail}/>
+                        <datalist id="tails">
+                            {TAILS.map((tail, index) => 
+                                <Tail key={index} value={tail}/>
+                                )}
+                        </datalist>
+                    </label>
                 </div>
-                <div>
+                <div id="domains" class="links">
                     {GROUPS_OF_DOMAINS.map((group, index) => (
-                        <ul key={index}>
-                            <h2>{group.groupName}</h2>
+                        <div class="section" key={index}>
+                            <h3>{group.groupName}</h3>
                             {group.domains.map((domain, index) => (
                                 <Domain key={index} domainCode={domain.domainCode} prodLink={domain.prodLink} env={this.state.env} tail={this.state.tail}/>
                             ))}
-                        </ul>
+                        </div>
                     ))}
                 </div>
             </div>

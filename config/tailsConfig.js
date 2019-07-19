@@ -3,8 +3,7 @@
 //this constant stores configuration of Tails
 const TAILS = 
 [
-    " ",
     "version",
-    "test"
+    "config/FeatureToggles/FeatureToggles.xml"
 ];
 
